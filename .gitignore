@@ -17,6 +17,8 @@ out/
 !**/src/test/**/out/
 .idea
 settings.gradle
+Habitica-2209014510-prod-release.apk
+
 
 ### Eclipse ###
 .apt_generated
