@@ -1,4 +1,4 @@
-package driver;
+package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import config.LocalDeviceConfig;
