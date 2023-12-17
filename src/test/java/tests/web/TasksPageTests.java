@@ -12,6 +12,7 @@ import utils.Helpers;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("web")
 public class TasksPageTests extends TestBase {
     TestData testData = new TestData();
     TasksPage tasksPage = new TasksPage();
@@ -19,13 +20,12 @@ public class TasksPageTests extends TestBase {
     @CsvFileSource(resources = "/inventoryTabTitles.csv")
     @ParameterizedTest
     @WithLogin
-    @Tag("web")
     public void verifyInventoryTabTitlesTest(String navElement, String title) {
         step("Открыть начальную страницу", () -> {
             tasksPage.openPage("");
         });
         step("Эмулируем наведение мышкой на элемент без клика", () -> {
-            tasksPage.hoverNavBarItem("Инвентарь");
+            tasksPage.hoverNavBarItem("Inventory");
         });
         step("Кликнуть на элемент выпадающего меню в навигационном меню", () -> {
             tasksPage.clickNavDropdownItem(navElement);
@@ -43,7 +43,7 @@ public class TasksPageTests extends TestBase {
             tasksPage.openPage("");
         });
         step("Добавить привычку в список", () -> {
-            tasksPage.addHabit("Добавить привычку", "Read " + testData.randomAuthor + "'s book");
+            tasksPage.addHabit("Add a Habit", "Read " + testData.randomAuthor + "'s book");
         });
         step("Убедиться, что привычка добавлена в список", () -> {
             tasksPage.checkHabitVisibility("Read " + testData.randomAuthor + "'s book");

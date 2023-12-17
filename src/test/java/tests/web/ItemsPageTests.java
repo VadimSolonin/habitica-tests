@@ -1,11 +1,13 @@
 package tests.web;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ItemsPage;
 import tests.api.extensions.WithLogin;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("web")
 public class ItemsPageTests extends TestBase {
 
     ItemsPage itemsPage = new ItemsPage();
@@ -23,7 +25,7 @@ public class ItemsPageTests extends TestBase {
             itemsPage.checkItemTitleCount(1);
         });
         step("Проверить, что на странице отображается особый предмет", () -> {
-            itemsPage.checkSpecialItemVisibility("Особые");
+            itemsPage.checkSpecialItemVisibility("Special");
         });
     }
 
@@ -33,11 +35,11 @@ public class ItemsPageTests extends TestBase {
         step("Открыть начальную страницу", () -> {
             itemsPage.openPage("inventory/items");
         });
-        step("Открыть начальную страницу", () -> {
-            itemsPage.setItemSearchName("Предмет");
+        step("Ввести в поле поиска значение `Item`", () -> {
+            itemsPage.setItemSearchName("Item");
         });
         step("Проверить, что на странице отображается особый предмет", () -> {
-            itemsPage.checkSpecialItemVisibility("Особые");
+            itemsPage.checkSpecialItemVisibility("Special");
         });
     }
 }

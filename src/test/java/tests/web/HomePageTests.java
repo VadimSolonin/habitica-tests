@@ -1,22 +1,18 @@
 package tests.web;
 
-import com.codeborne.selenide.Condition;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import utils.Helpers;
 
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 import static io.qameta.allure.Allure.step;
 
+@Tag("web")
 public class HomePageTests extends TestBase {
     HomePage homePage = new HomePage();
 
     @Test
-    void checkHomePageTitleTest(){
+    void checkHomePageTitleTest() {
         step("Открыть начальную страницу", () -> {
             homePage.openPage("");
         });
@@ -24,8 +20,9 @@ public class HomePageTests extends TestBase {
             Helpers.verifyPageTitle("Habitica - Gamify Your Life");
         });
     }
+
     @Test
-    void verifyNotificationOnRegistrationWithoutFillFieldsTest(){
+    void verifyNotificationOnRegistrationWithoutFillFieldsTest() {
         step("Открыть начальную страницу", () -> {
             homePage.openPage("");
         });
@@ -33,19 +30,20 @@ public class HomePageTests extends TestBase {
             homePage.clickSingUpButton();
         });
         step("Убедиться, что появилось сообщение об отсутствии имени, пароля и почты", () -> {
-            homePage.verifyNotificationText("Отсутствует имя пользователя. Отсутствует адрес электронной почты. Отсутствует пароль.");
+            homePage.verifyNotificationText("Missing username. Missing email. Missing password.");
         });
     }
+
     @Test
-    void checkRedirectOnStartButtonClickTest(){
+    void checkRedirectOnStartButtonClickTest() {
         step("Открыть начальную страницу", () -> {
             homePage.openPage("");
         });
-        step("Открыть начальную страницу", () -> {
-            homePage.clickStartNavLink("Начать");
+        step("Нажать на кнопку начала регистрации", () -> {
+            homePage.clickStartNavLink("Get started");
         });
         step("Проверить title страницы", () -> {
-            Helpers.verifyPageTitle("Регистрация | Habitica");
+            Helpers.verifyPageTitle("Registration | Habitica");
         });
 
     }
