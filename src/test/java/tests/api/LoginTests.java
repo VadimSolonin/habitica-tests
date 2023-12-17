@@ -1,6 +1,6 @@
 package tests.api;
 
-import io.qameta.allure.Owner;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestData;
@@ -15,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tests.api.specs.ReqResSpec.requestSpec;
 import static tests.api.specs.ReqResSpec.responseSpec;
 
-@Owner("VS")
 @Tag("api")
 public class LoginTests extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @DisplayName("Выполнение успешного запроса на логин")
     void successfulLoginTest() {
         LoginRequestModel loginData = new LoginRequestModel(testData.username, testData.password);
 
@@ -42,6 +42,7 @@ public class LoginTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Выполнение запроса на логин с пустым паролем")
     void loginWithEmptyPasswordTest() {
         LoginRequestModel loginData = new LoginRequestModel(testData.username, "");
 
@@ -62,6 +63,7 @@ public class LoginTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Выполнение запроса на логин с пустым телом")
     void loginWithEmptyBody() {
         BadRequestLoginResponseModel response =
                 step("Выполнить post-запрос на логин и зафиксировать ответ", () ->

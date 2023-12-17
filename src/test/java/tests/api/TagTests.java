@@ -1,7 +1,7 @@
 package tests.api;
 
-import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestData;
 import tests.api.apiResponses.AuthorizationApi;
@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tests.api.specs.ReqResSpec.requestSpec;
 import static tests.api.specs.ReqResSpec.responseSpec;
 
+@Tag("api")
 public class TagTests extends TestBase {
 
     TestData testData = new TestData();
@@ -22,7 +23,6 @@ public class TagTests extends TestBase {
     LoginResponseModel loginResponse = authorizationApi.login(loginRequestModel);
 
     @Test
-    @Owner("VS")
     @DisplayName("Запрос текущего списка тегов")
     void checkCurrentTagsListTest() {
         GetTagsResponseModel response = step("Выполнить запрос списка тегов и зафиксировать ответ", () ->
@@ -42,9 +42,8 @@ public class TagTests extends TestBase {
     }
 
     @Test
-    @Owner("VS")
     @DisplayName("Удаление тега")
-    void deleteTagFromTask() {
+    void deleteExistingTag() {
         AddTagRequestModel addTag = new AddTagRequestModel(testData.programmingLanguage);
 
         TagResponseModel postResponse = step("Добавить новый тег", () ->
