@@ -40,7 +40,7 @@ public class HomePageTests extends TestBase {
             homePage.openPage("");
         });
         step("Нажать на кнопку начала регистрации", () -> {
-            homePage.clickStartNavLink("Get started");
+            homePage.clickStartNavLink("Get Started");
         });
         step("Проверить title страницы", () -> {
             Helpers.verifyPageTitle("Registration | Habitica");
