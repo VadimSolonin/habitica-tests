@@ -12,6 +12,7 @@ public class TestData {
     public String randomPassword = faker.random().hex(9);
     public String shortPassword = faker.random().hex(3);
     public String randomAuthor = faker.book().author();
+    public String programmingLanguage = faker.programmingLanguage().name();
 
 
 }
