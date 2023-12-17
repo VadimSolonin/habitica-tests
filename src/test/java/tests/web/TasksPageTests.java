@@ -24,6 +24,9 @@ public class TasksPageTests extends TestBase {
         step("Открыть начальную страницу", () -> {
             tasksPage.openPage("");
         });
+        step("Убедиться, что страница загрузилась", () -> {
+            tasksPage.verifyHabitsColumnVisibility("Habits");
+        });
         step("Эмулируем наведение мышкой на элемент без клика", () -> {
             tasksPage.hoverNavBarItem("Inventory");
         });
