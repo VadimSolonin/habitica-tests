@@ -43,7 +43,7 @@ public class HomePageTests extends TestBase {
             homePage.clickStartNavLink("Get Started");
         });
         step("Проверить title страницы", () -> {
-            Helpers.verifyPageTitle("Registration | Habitica");
+            Helpers.verifyPageTitle("Register | Habitica");
         });
 
     }
