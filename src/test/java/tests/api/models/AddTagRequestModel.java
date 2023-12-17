@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TagDataModel {
-    String name, id;
-    Boolean challenge;
+public class AddTagRequestModel {
+    String name;
+    public AddTagRequestModel(String name){
+        this.name = name;
+    }
 }

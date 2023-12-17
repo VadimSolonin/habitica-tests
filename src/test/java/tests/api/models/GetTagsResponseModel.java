@@ -7,21 +7,22 @@ import java.util.List;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TagResponseModel {
+public class GetTagsResponseModel {
     Boolean success;
-    TagData data;
-    List<UserNotifications> notifications;
-    int userV;
-    String appVersion;
+    List<TagDataModel> data;
+    List<NotificationsModel> notifications;
+
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class TagData{
+    public static class TagDataModel {
         String name, id;
+        Boolean challenge;
     }
 
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class UserNotifications{
+    public static class NotificationsModel {
 
     }
+
 }
