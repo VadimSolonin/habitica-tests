@@ -3,6 +3,7 @@ package tests.mobile;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import tests.TestData;
 
 import static io.qameta.allure.Allure.step;
 
@@ -21,10 +22,10 @@ public class RegistrationTests extends TestBase {
             registrationPage.clickRegistrationButton();
         });
         step("Заполнить регистрационные поля", () -> {
-            registrationPage.setUsername(testData.username)
+            registrationPage.setUsername(testData.randomUsername)
                     .setEmail(testData.wrongEmail)
-                    .setPassword(testData.password)
-                    .setConfirmPassword(testData.password);
+                    .setPassword(testData.randomPassword)
+                    .setConfirmPassword(testData.randomPassword);
         });
         step("Нажать на кнопку `Регистрация`", () -> {
             registrationPage.clickConfirmRegistrationButton();
@@ -34,7 +35,7 @@ public class RegistrationTests extends TestBase {
         });
     }
 
-    @Tag("android")
+
     @Test
     void unsuccessfulRegistrationWithoutFillingAllFieldsTest() {
         step("Нажать на кнопку пропуска приветственного окна", () -> {
@@ -60,7 +61,7 @@ public class RegistrationTests extends TestBase {
             registrationPage.clickRegistrationButton();
         });
         step("Заполнить регистрационные поля", () -> {
-            registrationPage.setUsername(testData.username)
+            registrationPage.setUsername(testData.randomUsername)
                     .setEmail(testData.email)
                     .setPassword(testData.shortPassword)
                     .setConfirmPassword(testData.shortPassword);
@@ -70,6 +71,14 @@ public class RegistrationTests extends TestBase {
         });
         step("Проверить, что появилось сообщение о необходимости указать более длинный пароль", () -> {
             registrationPage.verifyMessageTextView("Your password has to be at least 8 characters long");
+        });
+    }
+
+    @Tag("android")
+    @Test
+    void ff() {
+        step("Нажать на кнопку пропуска приветственного окна", () -> {
+            registrationPage.clickSkipButton();
         });
     }
 }

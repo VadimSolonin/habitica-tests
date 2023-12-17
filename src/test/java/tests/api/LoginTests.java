@@ -2,9 +2,9 @@ package tests.api;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
+import tests.TestData;
 import tests.api.models.LoginRequestModel;
 import tests.api.models.LoginResponseModel;
-import tests.api.models.TagResponseModel;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
