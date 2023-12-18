@@ -42,7 +42,6 @@ public class TasksPageTests extends TestBase {
         step("Check page title", () -> {
             Helpers.verifyPageTitle(title);
         });
-
     }
 
     @Test
@@ -65,5 +64,4 @@ public class TasksPageTests extends TestBase {
             userTasksApi.deleteUserTask(taskId);
         });
     }
-
 }
