@@ -31,7 +31,7 @@ public class TestBase {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.remote = webConfig.getRemoteUrl();
         Configuration.timeout = 20000;
-        Configuration.pageLoadTimeout = 80000;
+        Configuration.pageLoadTimeout = 100000;
         Configuration.pageLoadStrategy = "eager";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
