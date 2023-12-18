@@ -24,6 +24,6 @@ public interface BrowserstackConfig extends Config {
     String getOS();
 
     @Key("browserstackApp")
-    @DefaultValue("bs://88df586f8cb86900b601ab3da2034f4cd17b1832")
+    @DefaultValue("bs://615731d58494ac648745f5a4d1ab6d321cfe87f9")
     String getApp();
 }
