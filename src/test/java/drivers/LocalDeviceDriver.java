@@ -1,7 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.LocalDeviceConfig;
+import config.EmulatorConfig;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.aeonbits.owner.ConfigFactory;
@@ -23,7 +23,7 @@ public class LocalDeviceDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
-        LocalDeviceConfig config = ConfigFactory.create(LocalDeviceConfig.class);
+        EmulatorConfig config = ConfigFactory.create(EmulatorConfig.class);
         UiAutomator2Options options = new UiAutomator2Options();
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
@@ -38,7 +38,7 @@ public class LocalDeviceDriver implements WebDriverProvider {
     }
 
     public static URL getAppiumServerUrl() {
-        LocalDeviceConfig config = ConfigFactory.create(LocalDeviceConfig.class);
+        EmulatorConfig config = ConfigFactory.create(EmulatorConfig.class);
         try {
             return new URL(config.appiumServer());
         } catch (MalformedURLException e) {
@@ -47,7 +47,7 @@ public class LocalDeviceDriver implements WebDriverProvider {
     }
 
     private String getAppPath() {
-        LocalDeviceConfig config = ConfigFactory.create(LocalDeviceConfig.class);
+        EmulatorConfig config = ConfigFactory.create(EmulatorConfig.class);
         File app = new File(config.appPath());
         if (!app.exists()) {
             try (InputStream in = new URL(config.appURL()).openStream()) {

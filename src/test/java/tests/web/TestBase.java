@@ -10,8 +10,10 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -37,6 +39,13 @@ public class TestBase {
                 "enableVNC", true,
                 "enableVideo", true
         ));
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("intl.accept_languages", "en");
+        chromeOptions.setExperimentalOption("prefs", prefs);
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
         Configuration.browserCapabilities = capabilities;
     }
 

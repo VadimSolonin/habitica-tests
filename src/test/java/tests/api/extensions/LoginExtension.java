@@ -33,6 +33,5 @@ public class LoginExtension implements BeforeEachCallback {
             open("static/svg/cce576f817758fa4398dadf559199d47.svg");
             Selenide.localStorage().setItem("habit-mobile-settings", result);
         });
-
     }
 }
