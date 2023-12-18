@@ -2,7 +2,6 @@ package tests.mobile;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,6 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
-
 
     @Test
     @DisplayName("Failed registration attempt with invalid email address")
@@ -41,7 +39,6 @@ public class RegistrationTests extends TestBase {
             registrationPage.verifyMessageTextView("Invalid email address.");
         });
     }
-
 
     @Test
     @DisplayName("Failed registration attempt without filling in all fields")
