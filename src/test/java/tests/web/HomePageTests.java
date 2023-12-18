@@ -55,6 +55,5 @@ public class HomePageTests extends TestBase {
         step("Make sure we have reached the registration page by checking the page title", () -> {
             Helpers.verifyPageTitle("Register | Habitica");
         });
-
     }
 }
