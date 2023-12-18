@@ -2,6 +2,7 @@ package tests.mobile;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import tests.TestData;
 import static io.qameta.allure.Allure.step;
 
 @Feature("Registration testing")
+@Tag("android")
 public class RegistrationTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     TestData testData = new TestData();
@@ -83,10 +85,10 @@ public class RegistrationTests extends TestBase {
         });
     }
 
-    @Tag("android")
     @Test
-    @DisplayName("test test")
-    @Story("test test")
+    @Disabled
+    @DisplayName("Just test")
+    @Story("Quickly executed test for testing")
     void testTest() {
         step("Click the button to skip the welcome window", () -> {
             registrationPage.clickSkipButton();
