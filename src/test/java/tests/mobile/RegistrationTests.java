@@ -84,14 +84,4 @@ public class RegistrationTests extends TestBase {
             registrationPage.verifyMessageTextView("Your password has to be at least 8 characters long");
         });
     }
-
-    @Test
-    @Disabled
-    @DisplayName("Just test")
-    @Story("Quickly executed test for testing")
-    void testTest() {
-        step("Click the button to skip the welcome window", () -> {
-            registrationPage.clickSkipButton();
-        });
-    }
 }
