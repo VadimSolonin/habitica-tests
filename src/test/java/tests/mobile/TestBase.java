@@ -37,7 +37,6 @@ public class TestBase {
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId().toString());
         }
-
         closeWebDriver();
     }
 }

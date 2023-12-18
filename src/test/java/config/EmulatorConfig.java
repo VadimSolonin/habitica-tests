@@ -5,7 +5,7 @@ import org.aeonbits.owner.Config;
 @Config.Sources({
         "classpath:${envMobile}.properties"
 })
-public interface LocalDeviceConfig extends Config {
+public interface EmulatorConfig extends Config {
     @Key("appiumServer")
     String appiumServer();
 
