@@ -1,5 +1,7 @@
 package tests.api;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,17 +17,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static tests.api.specs.ReqResSpec.requestSpec;
 import static tests.api.specs.ReqResSpec.responseSpec;
 
+@Feature("Authorization testing")
 @Tag("api")
 public class LoginTests extends TestBase {
     TestData testData = new TestData();
 
     @Test
-    @DisplayName("Выполнение успешного запроса на логин")
+    @DisplayName("Making a successful login request")
+    @Story("Verifying successful login using POST method")
     void successfulLoginTest() {
         LoginRequestModel loginData = new LoginRequestModel(testData.username, testData.password);
 
         LoginResponseModel response =
-                step("Выполнить post-запрос на логин и зафиксировать ответ", () ->
+                step("Execute a post-request for login and record the response", () ->
                         given(requestSpec)
                                 .contentType("application/json")
                                 .body(loginData)
@@ -35,19 +39,20 @@ public class LoginTests extends TestBase {
                                 .spec(responseSpec)
                                 .statusCode(200)
                                 .extract().as(LoginResponseModel.class));
-        step("Проверить успешность выполнения запроса", () -> {
+        step("Check the success of the request", () -> {
             assertTrue(response.getSuccess());
         });
 
     }
 
     @Test
-    @DisplayName("Выполнение запроса на логин с пустым паролем")
+    @DisplayName("Making unsuccessful login request with an empty password")
+    @Story("Verifying unsuccessful login using POST method with an empty password")
     void loginWithEmptyPasswordTest() {
         LoginRequestModel loginData = new LoginRequestModel(testData.username, "");
 
         BadRequestLoginResponseModel response =
-                step("Выполнить post-запрос на логин и зафиксировать ответ", () ->
+                step("Execute a post-request for login and record the response", () ->
                         given(requestSpec)
                                 .contentType("application/json")
                                 .body(loginData)
@@ -57,16 +62,17 @@ public class LoginTests extends TestBase {
                                 .spec(responseSpec)
                                 .statusCode(400)
                                 .extract().as(BadRequestLoginResponseModel.class));
-        step("Проверить данные из ответа", () -> {
+        step("Check the message about missing password from the response", () -> {
             assertEquals("Missing password.", response.getErrors().get(0).getMessage());
         });
     }
 
     @Test
-    @DisplayName("Выполнение запроса на логин с пустым телом")
+    @DisplayName("Performing a login request with an empty body")
+    @Story("Verifying unsuccessful login using POST method an empty body")
     void loginWithEmptyBody() {
         BadRequestLoginResponseModel response =
-                step("Выполнить post-запрос на логин и зафиксировать ответ", () ->
+                step("Execute a post-request for login and record the response", () ->
                         given(requestSpec)
                                 .contentType("application/json")
                                 .body("")
@@ -76,7 +82,7 @@ public class LoginTests extends TestBase {
                                 .spec(responseSpec)
                                 .statusCode(400)
                                 .extract().as(BadRequestLoginResponseModel.class));
-        step("Проверить данные из ответа", () -> {
+        step("Check data from response", () -> {
             assertEquals("Invalid request parameters.", response.getMessage());
             assertEquals("Missing username or email.", response.getErrors().get(0).getMessage());
             assertEquals("username", response.getErrors().get(0).getParam());

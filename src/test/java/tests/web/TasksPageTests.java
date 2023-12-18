@@ -1,5 +1,8 @@
 package tests.web;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,6 +15,7 @@ import utils.Helpers;
 
 import static io.qameta.allure.Allure.step;
 
+@Feature("Tasks page testing")
 @Tag("web")
 public class TasksPageTests extends TestBase {
     TestData testData = new TestData();
@@ -20,20 +24,22 @@ public class TasksPageTests extends TestBase {
     @CsvFileSource(resources = "/inventoryTabTitles.csv")
     @ParameterizedTest
     @WithLogin
+    @DisplayName("Check inventory tab links and tab titles")
+    @Story("Testing of opening navigation drop-down menu item and verifying page title")
     public void verifyInventoryTabTitlesTest(String navElement, String title) {
-        step("Открыть начальную страницу", () -> {
+        step("Open home page", () -> {
             tasksPage.openPage("");
         });
-        step("Убедиться, что страница загрузилась", () -> {
+        step("Make sure the page has loaded", () -> {
             tasksPage.verifyHabitsColumnVisibility("Habits");
         });
-        step("Эмулируем наведение мышкой на элемент без клика", () -> {
+        step("Emulate mouse hovering over an element without clicking", () -> {
             tasksPage.hoverNavBarItem("Inventory");
         });
-        step("Кликнуть на элемент выпадающего меню в навигационном меню", () -> {
+        step("Click on a drop-down menu item in the navigation menu", () -> {
             tasksPage.clickNavDropdownItem(navElement);
         });
-        step("Проверить заголовок страницы", () -> {
+        step("Check page title", () -> {
             Helpers.verifyPageTitle(title);
         });
 
@@ -41,17 +47,19 @@ public class TasksPageTests extends TestBase {
 
     @Test
     @WithLogin
+    @DisplayName("Quick add habit")
+    @Story("Testing adding a habit to the list")
     public void quickAddHabitTest() {
-        step("Открыть начальную страницу", () -> {
+        step("Open home page", () -> {
             tasksPage.openPage("");
         });
-        step("Добавить привычку в список", () -> {
+        step("Add a habit to the list", () -> {
             tasksPage.addHabit("Add a Habit", "Read " + testData.randomAuthor + "'s book");
         });
-        step("Убедиться, что привычка добавлена в список", () -> {
+        step("Make sure the habit is added to the list", () -> {
             tasksPage.checkHabitVisibility("Read " + testData.randomAuthor + "'s book");
         });
-        step("Удалить добавленную привычку средствами api", () -> {
+        step("Remove an added habit using the API", () -> {
             UserTasksApi userTasksApi = new UserTasksApi();
             String taskId = userTasksApi.getUserTasks().getData().get(0).getId();
             userTasksApi.deleteUserTask(taskId);

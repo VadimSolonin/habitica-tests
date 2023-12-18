@@ -80,3 +80,9 @@ task web(type: Test) {
         includeTags("web")
     }
 }
+
+task api(type: Test) {
+    useJUnitPlatform {
+        includeTags("api")
+    }
+}
