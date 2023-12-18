@@ -13,6 +13,7 @@ import tests.api.models.LoginRequestModel;
 import tests.api.models.LoginResponseModel;
 
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 
 public class LoginExtension implements BeforeEachCallback {
     TestData testData = new TestData();
@@ -28,7 +29,10 @@ public class LoginExtension implements BeforeEachCallback {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
         String result = mapper.writeValueAsString(habitMobileSettings);
-        open("static/svg/cce576f817758fa4398dadf559199d47.svg");
-        Selenide.localStorage().setItem("habit-mobile-settings", result);
+        step("Авторизация при помощи заполнения localStorage", () -> {
+            open("static/svg/cce576f817758fa4398dadf559199d47.svg");
+            Selenide.localStorage().setItem("habit-mobile-settings", result);
+        });
+
     }
 }
