@@ -29,7 +29,7 @@ public class LoginExtension implements BeforeEachCallback {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
         String result = mapper.writeValueAsString(habitMobileSettings);
-        step("Авторизация при помощи заполнения localStorage", () -> {
+        step("Authorization by filling in localStorage", () -> {
             open("static/svg/cce576f817758fa4398dadf559199d47.svg");
             Selenide.localStorage().setItem("habit-mobile-settings", result);
         });
