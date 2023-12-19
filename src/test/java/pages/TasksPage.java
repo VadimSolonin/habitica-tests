@@ -12,8 +12,11 @@ import static com.codeborne.selenide.Selenide.*;
 public class TasksPage {
 
     ElementsCollection navBarItem = $$(".topbar-item");
-    SelenideElement tasksList = $(".habit").$(".sortable-tasks");
-    SelenideElement workspaceContainer = $(".col-12");
+    SelenideElement tasksList = $(".habit").$(".sortable-tasks"),
+            workspaceContainer = $(".col-12"),
+            userButton = $("#menu_collapse").$("[aria-label='User']"),
+            userDropdownContainer = $("#menu_collapse").$(".user-dropdown");
+
 
 
     public TasksPage openPage(String pageAddress) {
@@ -43,6 +46,14 @@ public class TasksPage {
 
     public TasksPage verifyHabitsColumnVisibility(String habitName) {
         workspaceContainer.$(withText(habitName)).shouldBe(visible);
+        return this;
+    }
+    public TasksPage clickUserButton() {
+        userButton.click();
+        return this;
+    }
+    public TasksPage clickUserDropdownElementButton(String element) {
+        userDropdownContainer.$(byText(element)).shouldBe(visible).click();
         return this;
     }
 }
