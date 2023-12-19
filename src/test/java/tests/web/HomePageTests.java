@@ -43,7 +43,7 @@ public class HomePageTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Check redirect on start button click ")
+    @DisplayName("Check redirect on start button click")
     @Story("Testing redirection to the registration page when the Start button is clicked")
     void checkRedirectToRegistrationPageOnStartButtonClickTest() {
         step("Open home page", () -> {
