@@ -15,6 +15,6 @@ public class TestBase {
         RestAssured.basePath = "/api";
         Configuration.baseUrl = "https://habitica.com/";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.remote = webConfig.getRemoteUrl();
+        Configuration.remote = webConfig.getRemoteUrl();
     }
 }

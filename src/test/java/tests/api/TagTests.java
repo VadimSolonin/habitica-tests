@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestData;
-import tests.api.apiResponses.AuthorizationApi;
+import tests.api.api.AuthorizationApi;
 import tests.api.models.*;
 
 import static io.qameta.allure.Allure.step;
