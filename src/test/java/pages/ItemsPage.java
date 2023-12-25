@@ -9,8 +9,7 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ItemsPage {
-    SelenideElement singUpButton = $(".sign-up"),
-            specialFilterCheckbox = $("#special").sibling(0),
+    SelenideElement specialFilterCheckbox = $("#special").sibling(0),
             itemsTab = $(".standard-page"),
             itemNameInputSearch = $(".form-control");
     ElementsCollection ItemTitleCount = $$(".standard-page div h2");

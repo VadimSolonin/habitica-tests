@@ -1,4 +1,4 @@
-package tests.api.apiResponses;
+package tests.api.api;
 
 import tests.TestData;
 import tests.api.models.DeleteUserTaskResponseModel;

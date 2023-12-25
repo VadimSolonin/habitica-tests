@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import tests.TestData;
-import tests.api.apiResponses.AuthorizationApi;
+import tests.api.api.AuthorizationApi;
 import tests.api.models.HabitMobileSettings;
 import tests.api.models.LoginRequestModel;
 import tests.api.models.LoginResponseModel;

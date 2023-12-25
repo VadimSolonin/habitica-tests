@@ -28,7 +28,7 @@ public class TestBase {
         RestAssured.basePath = "/api";
         Configuration.browser = webConfig.getBrowserName();
         Configuration.browserVersion = webConfig.getBrowserVersion();
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserSize = webConfig.getBrowserSize();
         Configuration.remote = webConfig.getRemoteUrl();
         Configuration.timeout = 20000;
         Configuration.pageLoadTimeout = 100000;

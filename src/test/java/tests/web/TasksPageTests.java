@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.TasksPage;
 import tests.TestData;
-import tests.api.apiResponses.UserTasksApi;
+import tests.api.api.UserTasksApi;
 import tests.api.extensions.WithLogin;
 import utils.Helpers;
 
