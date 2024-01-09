@@ -90,7 +90,13 @@ Habitica — трекер задач, который совместил фило
 - [x] Быстрое добавление ежедневного дела в список
 - [x] Быстрое добавление награды в список
 
-## Запуск тестов:
+## Запуск тестов
+> [!NOTE]
+> Убедитесь, что у вас установлены Java, Gradle, IntelliJ IDEA и в качестве браузера используется Chrome
+>
+
+Все настройки лежат в папке `resources` в файлах `.properties`. <br/>
+При необходимости можно изменить конфигурацию в этих файлах.
 
 ### Допустимые комбинации
 
@@ -110,11 +116,17 @@ flowchart LR
 ```
 
 ### Локальный запуск тестов
-
 #### Запуск всех тестов
 
+Для запуска следует открыть IntelliJ IDEA и выполнить в терминале:
 ```
 gradle clean test
+```
+
+или 
+
+```
+gradle clean test -Denv=local
 ```
 
 #### WEB
@@ -154,27 +166,19 @@ gradle allureServe
 </details>
 
 ### Удаленный запуск тестов
+Тесты можно запустить из терминала IntelliJ IDEA, а выполнены они будут в удаленно запущенном браузере в Docker-контейнере Selenoid:
 
 ```
-clean
-${TASK}
--DbrowserName=${BROWSER}
--DbrowserVersion=${BROWSER_VERSION}
--DbrowserSize=${BROWSER_SIZE}
--DremoteUrl=${REMOTE_URL}
--DenvMobile=${ENV_MOBILE}
+gradle clean test -Denv=remote
 ```
->  `${TASK}` - запускаемая группа тестов. `test` запустит все тесты . `web` `api` `android` запустит тесты, отмеченные соответствующим тегом 
-> 
-> `${BROWSER}` - наименование браузера. По умолчанию <code>chrome</code>
-> 
-> `${BROWSER_VERSION}` - номер версии браузера. По умолчанию <code>100.0</code>
-> 
-> `${BROWSER_SIZE}` - размер окна браузера. По умолчанию <code>1980x1080</code>
->
-> `${REMOTE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты
->
-> `${ENV_MOBILE}` - переменная определения среды для запуска мобильных тестов
+
+Параметры, которыми можно управлять:
+```
+-DbrowserName - наименование браузера. По умолчанию chrome
+-DbrowserVersion - номер версии браузера. По умолчанию 100.0
+-DbrowserSize - размер окна браузера. По умолчанию 1980x1080
+-DremoteUrl - адрес удаленного сервера, на котором будут запускаться тесты
+```
 
 ## Cборка тестов в <b><a target="_blank" href="https://jenkins.autotests.cloud/job/C22-VadimSolonin-habitica-project/">Jenkins</a></b>
 
