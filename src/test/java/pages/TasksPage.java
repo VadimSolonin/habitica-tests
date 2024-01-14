@@ -11,8 +11,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TasksPage {
 
-    ElementsCollection navBarItem = $$(".topbar-item");
-    SelenideElement tasksList = $(".habit").$(".sortable-tasks"),
+    private ElementsCollection navBarItem = $$(".topbar-item");
+    private SelenideElement tasksList = $(".habit").$(".sortable-tasks"),
             workspaceContainer = $(".col-12"),
             userButton = $("#menu_collapse").$("[aria-label='User']"),
             userDropdownContainer = $("#menu_collapse").$(".user-dropdown");

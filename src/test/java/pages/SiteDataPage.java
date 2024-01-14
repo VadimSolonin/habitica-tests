@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class SiteDataPage {
-    SelenideElement secondaryMenuContainer = $(".secondary-menu"),
+    private SelenideElement secondaryMenuContainer = $(".secondary-menu"),
                     userIdTooltip = $("#tooltip_userId");
 
     public SiteDataPage clickSecondaryMenuElement(String element) {
