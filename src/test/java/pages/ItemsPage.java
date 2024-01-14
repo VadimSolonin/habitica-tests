@@ -9,10 +9,10 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ItemsPage {
-    SelenideElement specialFilterCheckbox = $("#special").sibling(0),
+    private SelenideElement specialFilterCheckbox = $("#special").sibling(0),
             itemsTab = $(".standard-page"),
             itemNameInputSearch = $(".form-control");
-    ElementsCollection ItemTitleCount = $$(".standard-page div h2");
+    private ElementsCollection ItemTitleCount = $$(".standard-page div h2");
 
     public ItemsPage openPage(String pageAddress) {
         open(pageAddress);

@@ -8,7 +8,7 @@ import static org.openqa.selenium.By.id;
 
 public class RegistrationPage {
 
-    SelenideElement skipButton = $(id("com.habitrpg.android.habitica:id/skipButton")),
+    private SelenideElement skipButton = $(id("com.habitrpg.android.habitica:id/skipButton")),
             registrationButton = $(id("com.habitrpg.android.habitica:id/new_game_button")),
             usernameField = $(id("com.habitrpg.android.habitica:id/username")),
             emailField = $(id("com.habitrpg.android.habitica:id/email")),

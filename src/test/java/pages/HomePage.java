@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HomePage {
 
-    SelenideElement singUpButton = $(".sign-up"),
+    private SelenideElement singUpButton = $(".sign-up"),
             notificationHolder = $(".notification-holder");
 
     public HomePage openPage(String pageAddress) {
