@@ -1,10 +1,12 @@
 package tests.web;
 
+import decorator.LoggingExtension;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.HomePage;
 import utils.Helpers;
 
@@ -43,6 +45,7 @@ public class HomePageTests extends TestBase {
     }
 
     @Test
+    @ExtendWith(LoggingExtension.class)
     @DisplayName("Check redirect on start button click")
     @Story("Testing redirection to the registration page when the Start button is clicked")
     void checkRedirectToRegistrationPageOnStartButtonClickTest() {
