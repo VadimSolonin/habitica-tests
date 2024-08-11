@@ -13,13 +13,12 @@ import tests.api.api.UserTasksApi;
 import tests.api.extensions.WithLogin;
 import utils.Helpers;
 
-import static io.qameta.allure.Allure.step;
-
 @Feature("Tasks page testing")
 @Tag("web")
 public class TasksPageTests extends TestBase {
     TestData testData = new TestData();
     TasksPage tasksPage = new TasksPage();
+    UserTasksApi userTasksApi = new UserTasksApi();
 
     @CsvFileSource(resources = "/inventoryTabTitles.csv")
     @ParameterizedTest
@@ -27,21 +26,11 @@ public class TasksPageTests extends TestBase {
     @DisplayName("Check inventory tab links and tab titles")
     @Story("Testing of opening navigation drop-down menu item and verifying page title")
     public void verifyInventoryTabTitlesTest(String navElement, String title) {
-        step("Open home page", () -> {
-            tasksPage.openPage("");
-        });
-        step("Make sure the page has loaded", () -> {
-            tasksPage.verifyHabitsColumnVisibility("Habits");
-        });
-        step("Emulate mouse hovering over an element without clicking", () -> {
-            tasksPage.hoverNavBarItem("Inventory");
-        });
-        step("Click on a drop-down menu item in the navigation menu", () -> {
-            tasksPage.clickNavDropdownItem(navElement);
-        });
-        step("Check page title", () -> {
-            Helpers.verifyPageTitle(title);
-        });
+        tasksPage.openPage("")
+                .verifyHabitsColumnVisibility("Habits")
+                .hoverNavBarItem("Inventory")
+                .clickNavDropdownItem(navElement);
+        Helpers.verifyPageTitle(title);
     }
 
     @Test
@@ -49,19 +38,10 @@ public class TasksPageTests extends TestBase {
     @DisplayName("Quick add habit")
     @Story("Testing adding a habit to the list")
     public void quickAddHabitTest() {
-        step("Open home page", () -> {
-            tasksPage.openPage("");
-        });
-        step("Add a habit to the list", () -> {
-            tasksPage.addHabit("Add a Habit", "Read " + testData.randomAuthor + "'s book");
-        });
-        step("Make sure the habit is added to the list", () -> {
-            tasksPage.checkHabitVisibility("Read " + testData.randomAuthor + "'s book");
-        });
-        step("Remove an added habit using the API", () -> {
-            UserTasksApi userTasksApi = new UserTasksApi();
-            String taskId = userTasksApi.getUserTasks().getData().get(0).getId();
-            userTasksApi.deleteUserTask(taskId);
-        });
+        tasksPage.openPage("")
+                .addHabit("Add a Habit", "Read " + testData.randomAuthor + "'s book")
+                .checkHabitVisibility("Read " + testData.randomAuthor + "'s book");
+        String taskId = userTasksApi.getUserTasks().getData().get(0).getId();
+        userTasksApi.deleteUserTask(taskId);
     }
 }

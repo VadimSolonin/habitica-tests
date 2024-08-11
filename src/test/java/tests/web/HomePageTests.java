@@ -21,27 +21,17 @@ public class HomePageTests extends TestBase {
     @DisplayName("Successful verification of home page title")
     @Story("Testing home page header")
     void checkHomePageTitleTest() {
-        step("Open home page", () -> {
-            homePage.openPage("");
-        });
-        step("Check page title", () -> {
-            Helpers.verifyPageTitle("Habitica - Gamify Your Life");
-        });
+        homePage.openPage("");
+        Helpers.verifyPageTitle("Habitica - Gamify Your Life");
     }
 
     @Test
     @DisplayName("Unsuccessful registration without filling in all fields")
     @Story("Testing registration without filling in all fields")
     void verifyNotificationOnRegistrationWithoutFillFieldsTest() {
-        step("Open home page", () -> {
-            homePage.openPage("");
-        });
-        step("Click on the registration button", () -> {
-            homePage.clickSingUpButton();
-        });
-        step("Make sure that a message appears about missing name, password and email", () -> {
-            homePage.verifyNotificationText("Missing username. Missing email. Missing password.");
-        });
+        homePage.openPage("")
+                .clickSingUpButton()
+                .verifyNotificationText("Missing username. Missing email. Missing password.");
     }
 
     @Test
@@ -49,14 +39,8 @@ public class HomePageTests extends TestBase {
     @DisplayName("Check redirect on start button click")
     @Story("Testing redirection to the registration page when the Start button is clicked")
     void checkRedirectToRegistrationPageOnStartButtonClickTest() {
-        step("Open home page", () -> {
-            homePage.openPage("");
-        });
-        step("Click on the start registration button", () -> {
-            homePage.clickStartNavLink("Get Started");
-        });
-        step("Make sure we have reached the registration page by checking the page title", () -> {
-            Helpers.verifyPageTitle("Register | Habitica");
-        });
+        homePage.openPage("")
+                .clickStartNavLink("Get Started");
+        Helpers.verifyPageTitle("Register | Habitica");
     }
 }
