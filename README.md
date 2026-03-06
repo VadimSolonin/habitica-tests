@@ -97,6 +97,9 @@ Habitica — трекер задач, который совместил фило
 > [!NOTE]
 > Убедитесь, что у вас установлены Java, Gradle, IntelliJ IDEA и в качестве браузера используется Chrome
 >
+> [!IMPORTANT]
+> Перед первым запуском тестов укажите свои актуальные логин и пароль Habitica в файле `src/test/java/tests/TestData.java` (поля `username` и `password`).
+
 
 Конфигурационные файлы `.properties` лежат в папке `resources`. <br/>
 При необходимости можно изменить их.

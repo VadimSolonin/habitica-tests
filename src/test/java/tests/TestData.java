@@ -4,8 +4,8 @@ import com.github.javafaker.Faker;
 
 public class TestData {
     Faker faker = new Faker();
-    public String username = "solonin.vad@gmail.com";
-    public String password = "Tt1!esp@ss";
+    public String username = "test";
+    public String password = "test";
     public String randomUsername = faker.name().firstName();
     public String email = faker.internet().emailAddress();
     public String wrongEmail = faker.lorem().characters(9);
