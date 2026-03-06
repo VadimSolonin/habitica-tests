@@ -13,6 +13,5 @@ public class TestData {
     public String shortPassword = faker.random().hex(3);
     public String randomAuthor = faker.book().author();
     public String programmingLanguage = faker.programmingLanguage().name();
-
-
+    public List<String> text = faker.lorem().words();
 }
