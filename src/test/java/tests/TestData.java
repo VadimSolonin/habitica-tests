@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import java.util.List;
 
 public class TestData {
     Faker faker = new Faker();
